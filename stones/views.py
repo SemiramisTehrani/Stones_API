@@ -23,15 +23,18 @@ def stones_list(request) :
          serializer.save()
          return Response(serializer.data, status = status.HTTP_201_CREATED)
  
-@api_view(['GET'])
+@api_view(['GET','PUT'])
 def stone_detail(request, pk) :
-    try :
-        stone = Stone.objects.get(pk=pk)
+    stone = get_object_or_404(Stone,pk=pk)
+    if request.method == 'GET' :
         serializer = StoneSerializer(stone);
         return Response(serializer.data)
+    elif request.method == 'PUT' :
+        serializer = StoneSerializer(stone, data=request.data)
+        serializer.is_valid(raise_exception = True)
+        serializer.save()
+        return Response(serializer.data)
 
-    except Stone.DoesNotExist :
-        return Response(status = status.HTTP_404_NOT_FOUND)
 
 
 
