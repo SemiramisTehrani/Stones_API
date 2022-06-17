@@ -1,3 +1,12 @@
-from django.shortcuts import render
+# removing everything here at first and add ours
 
-# Create your views here.
+from django.shortcuts import get_object_or_404
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+
+
+@api_view(['GET'])
+def stones_list(request) :
+
+    return Response('ok')
+
