@@ -68,7 +68,12 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'stones_project.wsgi.application'
+
+REST_FRAMEWORK = {
+    'COERCE_DECIMAL_TO_STRING' : False
+}                                                        # sEMI added this
+
+WSGI_APPLICATION = 'stones_project.wsgi.application'        # sEMI added this
 
 
 
