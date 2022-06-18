@@ -1,0 +1,1 @@
+SELECT * FROM stones_database.stones_stone;
